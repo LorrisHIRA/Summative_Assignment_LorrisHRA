@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Finance Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <h1>Student Finance Tracker</h1>
+</header>
+
+<nav>
+  <button data-view="about">About</button>
+  <button data-view="dashboard">Dashboard</button>
+  <button data-view="records">Records</button>
+  <button data-view="settings">Settings</button>
+</nav>
+
+<main id="main">
+
+<section id="about" class="view">
+  <h2>About</h2>
+  <p>This web app allows students to track expenses and manage their monthly budget.</p>
+  <p>Created by: Your Name</p>
+  <p>Email: your@email.com</p>
+</section>
+
+<section id="dashboard" class="view hidden">
+  <h2>Dashboard</h2>
+  <div class="cards">
+    <div>Total Records: <span id="totalCount">0</span></div>
+    <div>Total Spent: $<span id="totalSpent">0.00</span></div>
+    <div>Top Category: <span id="topCategory">-</span></div>
+  </div>
+  <div id="capStatus" role="status" aria-live="polite"></div>
+</section>
+
+<section id="records" class="view hidden">
+  <h2>Records</h2>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Regex search...">
+    <select id="sortSelect">
+      <option value="">Sort By</option>
+      <option value="amount">Amount</option>
+      <option value="date">Date</option>
+      <option value="description">Description</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="recordsTable"></tbody>
+  </table>
+
+  <h3>Add Record</h3>
+
+  <form id="recordForm">
+    <label>Description
+      <input type="text" id="description" required>
+    </label>
+
+    <label>Amount
+      <input type="text" id="amount" required>
+    </label>
+
+    <label>Category
+      <input type="text" id="category" required>
+    </label>
+
+    <label>Date
+      <input type="date" id="date" required>
+    </label>
+
+    <button type="submit">Add</button>
+    <p id="formMessage" role="status"></p>
+  </form>
+</section>
+
+<section id="settings" class="view hidden">
+  <h2>Settings</h2>
+  <label>Monthly Budget Cap
+    <input type="number" id="budgetCap">
+  </label>
+  <button id="saveCap">Save</button>
+
+  <h3>Import / Export</h3>
+  <button id="exportBtn">Export JSON</button>
+  <input type="file" id="importFile" accept=".json">
+</section>
+
+</main>
+
+<footer>
+  <p>2026 © Student Finance Tracker</p>
+</footer>
+
+<script type="module" src="scripts/app.js"></script>
+</body>
+</html>
